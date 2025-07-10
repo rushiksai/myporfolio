@@ -161,58 +161,35 @@ html, body {
 
 /* Media query for mobile responsiveness */
 @media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: space-between; /* Keep logo and hamburger separate */
-    padding: 1rem 1.5rem; /* Adjust padding for smaller screens */
-  }
-
-  .navbar .logo {
-    font-size: 1.5rem; /* Adjust logo size */
-  }
-
-  .hamburger {
-    display: flex; /* Show the hamburger icon on mobile */
-  }
+  /* ... other rules ... */
 
   .navbar .nav-links {
-    width: 100%; /* Take full width */
-    flex-direction: column; /* Stack links vertically */
+    width: 100%;
+    flex-direction: column; /* This stacks them vertically */
     text-align: center;
-    max-height: 0; /* Hidden by default */
-    overflow: hidden; /* Hide overflow content */
-    transition: max-height 0.3s ease-in-out; /* Smooth transition for opening/closing */
-    background: rgba(11, 29, 58, 0.95); /* Background for the dropdown menu */
-    padding: 0; /* Remove padding when closed */
+    max-height: 0; /* Starts hidden */
+    overflow: hidden; /* Hides content beyond max-height */
+    transition: max-height 0.3s ease-in-out;
+    background: rgba(11, 29, 58, 0.95);
+    padding: 0;
   }
 
   .navbar .nav-links li {
-    margin: 15px 0; /* Adjust spacing for vertical links */
+    margin: 15px 0; /* Provides vertical spacing */
   }
 
   .navbar .nav-links a {
-    font-size: 1.1rem; /* Adjust link font size */
-    padding: 10px 0; /* More padding for easier tapping */
+    font-size: 1.1rem;
+    padding: 10px 0;
   }
 
-  /* Show the menu when the checkbox is checked (checkbox hack) */
+  /* THIS IS THE CRITICAL RULE FOR OPENING THE MENU */
   .nav-toggle:checked ~ .nav-links {
-    max-height: 300px; /* Or a suitable height to reveal all links */
+    max-height: 300px; /* <--- CHECK THIS VALUE! Is it enough? */
     padding: 1rem 0; /* Add padding when open */
   }
 
-  /* Hamburger icon animation when menu is open */
-  .nav-toggle:checked + .hamburger .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-  }
-
-  .nav-toggle:checked + .hamburger .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav-toggle:checked + .hamburger .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-  }
+  /* ... hamburger animation rules ... */
 }
 /* --- Back To Top Button --- */
 #backToTop {
