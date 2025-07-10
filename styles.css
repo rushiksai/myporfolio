@@ -799,8 +799,66 @@ html, body {
   transform: scale(1.1);
   color: white;
 }
+/* Responsive adjustments for Projects Section */
+@media (max-width: 768px) {
+  .projects-section .section-title {
+    font-size: 2rem; /* Adjust title size for mobile */
+  }
 
+  .projects-grid {
+    /* When the grid wraps to a single column, this will center that column */
+    /* This works because auto-fit will make the single column take full width,
+       and justify-content: center will align it if there's any remaining space
+       or if the minmax causes it to not fill 100% precisely. */
+    justify-content: center;
+    /* You might also want to adjust the gap or padding for smaller screens if needed */
+    gap: 20px; /* Slightly smaller gap for mobile */
+  }
 
+  .project-card {
+    /* Ensure cards don't stretch too wide on very small screens if minmax(320px, 1fr) is too large */
+    /* This can be adjusted based on desired minimum card width */
+    min-width: unset; /* Allow it to shrink below 320px if necessary */
+    width: 90%; /* Example: Make cards take 90% width on very small screens */
+    max-width: 350px; /* Example: Cap the max width of a single card */
+    margin: 0 auto; /* Center individual cards if they don't fill the grid row */
+  }
+
+  .project-image img {
+    height: 150px; /* Adjust image height for smaller screens */
+  }
+
+  .project-title {
+    font-size: 1.2rem; /* Adjust title font size */
+  }
+
+  .tool-btn {
+    font-size: 0.85rem; /* Adjust tool button font size */
+    padding: 6px 12px;
+  }
+
+  .project-description {
+    font-size: 0.95rem; /* Adjust description font size */
+  }
+
+  .github-icon-link {
+    width: 32px; /* Smaller icon on mobile */
+    height: 32px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 40px 15px; /* More padding adjustment for very small screens */
+  }
+  .projects-grid {
+    gap: 15px; /* Even smaller gap */
+  }
+  .project-card {
+    width: 100%; /* Ensure it takes full width on very small screens */
+  }
+}
 /* Ensure the Font Awesome CDN link is in your <head> as previously discussed */
 /* Skills Section */
 .skills-section {
