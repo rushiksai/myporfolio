@@ -63,38 +63,84 @@ html, body {
     width: auto;
 }
 /* Responsive adjustments for the new section cards */
-/* --- REMOVED / CONFLICTING Responsive Navbar (for smaller screens) --- */
-/*
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #173974;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 25px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* --- Responsive Navbar for mobile screens --- */
 @media (max-width: 768px) {
-  .navbar {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #173974;
+    display: none;
+    padding: 1rem 0;
   }
 
-  .navbar .nav-links {
-    flex-direction: column;
+  .nav-links li {
     width: 100%;
-    margin-top: 15px;
-    display: none; // This was the problem!
-  }
-
-  .navbar .nav-links li {
-    margin: 10px 0;
-    width: 100%;
-  }
-
-  .navbar .nav-links a {
-    display: block;
-    padding: 10px 0;
     text-align: center;
+    margin: 0.5rem 0;
   }
 
-  body {
-    padding-top: 100px;
+  .nav-links a {
+    padding: 0.75rem 0;
+    display: block;
+  }
+
+  /* Toggle nav display when checkbox is checked */
+  .nav-toggle:checked + .hamburger + .nav-links {
+    display: flex;
   }
 }
-*/
+
 /* --- Back To Top Button --- */
 #backToTop {
   position: fixed;
@@ -123,37 +169,6 @@ html, body {
 }
 
 /* --- Responsive Navbar (for smaller screens) --- */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Stack logo and links */
-    align-items: flex-start;
-    padding: 1rem;
-  }
-
-  .navbar .nav-links {
-    flex-direction: column; /* Stack links vertically */
-    width: 100%;
-    margin-top: 15px; /* Space between logo and links */
-    display: none; /* Hidden by default, if you were to add a mobile toggle, it would unhide this */
-  }
-
-  .navbar .nav-links li {
-    margin: 10px 0; /* Vertical spacing for stacked links */
-    width: 100%;
-  }
-
-  .navbar .nav-links a {
-    display: block; /* Make links full width of their list item */
-    padding: 10px 0;
-    text-align: center;
-  }
-
-  /* Adjust padding for body when navbar stacks */
-  body {
-    padding-top: 100px; /* More padding if navbar takes more height on mobile */
-  }
-}
-
 
 /* All sections will now share a common base style for full width and padding */
 /* --- Hero Section --- */
