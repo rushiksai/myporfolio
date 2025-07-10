@@ -62,6 +62,67 @@ html, body {
     margin: 0 auto;
     width: auto;
 }
+/* Responsive About */
+@media (max-width: 768px) {
+  .about-cards {
+    flex-direction: column;
+    align-items: center; /* This centers the about cards when stacked */
+  }
+
+  .about-section {
+    padding: 40px 15px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* --- NEW/MODIFIED RULES FOR CENTER ALIGNMENT ON MOBILE --- */
+  .about-content {
+    /* Override margin: 0 auto; if needed, but it should still center the block */
+    /* Add text-align: center to center all inline content within about-content */
+    text-align: center; /* <--- ADD THIS LINE */
+    padding: 0 10px; /* Adjust horizontal padding for very small screens if needed */
+  }
+
+  .about-list {
+    /* Remove default padding-left to allow list items to center */
+    padding-left: 0; /* <--- ADD THIS LINE */
+    list-style-position: inside; /* <--- OPTIONAL: Keeps bullets inside the centered text */
+    text-align: center; /* <--- ADD THIS LINE: Centers the text within list items */
+  }
+
+  .about-list li {
+    /* Ensure list items themselves are not too wide, so text-align can work effectively */
+    max-width: 600px; /* Adjust as needed, prevents text from being too wide on one line */
+    margin-left: auto; /* Centers the list item block */
+    margin-right: auto; /* Centers the list item block */
+  }
+
+  .about-highlight {
+    text-align: center; /* <--- ADD THIS LINE: Centers the highlight text */
+  }
+
+  .about-card {
+    /* Ensure individual cards are centered if they don't fill the row */
+    margin: 0 auto; /* <--- ADD THIS LINE: Centers individual cards */
+    width: 90%; /* Adjust width for mobile cards */
+    max-width: 350px; /* Prevent cards from becoming too wide on smaller tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    padding: 0 5px; /* Even tighter padding for very small phones */
+  }
+  .about-list li {
+    max-width: 95%; /* Adjust max-width for very small screens */
+  }
+  .about-card {
+    width: 100%; /* Make cards full width on very small screens */
+  }
+}
+
 /* Responsive adjustments for the new section cards */
 .navbar {
   display: flex;
