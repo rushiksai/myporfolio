@@ -63,134 +63,38 @@ html, body {
     width: auto;
 }
 /* Responsive adjustments for the new section cards */
+/* --- REMOVED / CONFLICTING Responsive Navbar (for smaller screens) --- */
+/*
 @media (max-width: 768px) {
-  .section-card,
-  .hero .hero-content-wrapper {
-    padding: 25px 20px; /* Smaller padding on mobile */
-    border-radius: 12px; /* Slightly less rounded corners on mobile */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
   }
-}
-/* --- New Navbar Styling --- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: fixed; /* Fixed at the top */
-  top: 0;
-  width: 100%;
-  z-index: 1000; /* High z-index to stay on top */
-  background: rgba(11, 29, 58, 0.98); /* Dark background with slight transparency */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-  box-sizing: border-box; /* Include padding in width */
-  min-height: 70px; /* Ensure a minimum height for the navbar */
-}
-
-.navbar .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #60a5fa; /* Highlight logo color */
-  text-decoration: none;
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar .nav-links li {
-  margin-left: 25px; /* Space between links */
-}
-
-.navbar .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 8px 0; /* Add some padding for clickable area */
-  position: relative; /* For underline effect */
-}
-
-.navbar .nav-links a:hover {
-  color: #87cefa; /* Lighter blue on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-}
-
-.navbar .nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #87cefa; /* Underline color */
-  bottom: 0;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-.navbar .nav-links a:hover::after {
-  width: 100%; /* Expand underline on hover */
-}
-
-/* Hidden checkbox for the hamburger menu functionality (checkbox hack) */
-.nav-toggle {
-  display: none;
-}
-
-/* Hamburger Icon Styles */
-.hamburger {
-  display: none; /* Hidden by default, shown in mobile */
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-  z-index: 1001; /* Ensure it's above the menu when open */
-}
-
-.hamburger .bar {
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-}
-
-
-/* Media query for mobile responsiveness */
-@media (max-width: 768px) {
-  /* ... other rules ... */
 
   .navbar .nav-links {
+    flex-direction: column;
     width: 100%;
-    flex-direction: column; /* This stacks them vertically */
-    text-align: center;
-    max-height: 0; /* Starts hidden */
-    overflow: hidden; /* Hides content beyond max-height */
-    transition: max-height 0.3s ease-in-out;
-    background: rgba(11, 29, 58, 0.95);
-    padding: 0;
+    margin-top: 15px;
+    display: none; // This was the problem!
   }
 
   .navbar .nav-links li {
-    margin: 15px 0; /* Provides vertical spacing */
+    margin: 10px 0;
+    width: 100%;
   }
 
   .navbar .nav-links a {
-    font-size: 1.1rem;
+    display: block;
     padding: 10px 0;
+    text-align: center;
   }
 
-  /* THIS IS THE CRITICAL RULE FOR OPENING THE MENU */
-  .nav-toggle:checked ~ .nav-links {
-    max-height: 300px; /* <--- CHECK THIS VALUE! Is it enough? */
-    padding: 1rem 0; /* Add padding when open */
+  body {
+    padding-top: 100px;
   }
-
-  /* ... hamburger animation rules ... */
 }
+*/
 /* --- Back To Top Button --- */
 #backToTop {
   position: fixed;
