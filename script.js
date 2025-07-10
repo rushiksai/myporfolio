@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ensuring the AOS CDN is loaded before this script.
   // AOS.init();
 
+  // Get the navigation toggle checkbox
+  const navToggle = document.getElementById('nav-toggle');
+
   // Smooth scroll for all internal anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -18,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         targetElement.scrollIntoView({
           behavior: 'smooth'
         });
+
+        // --- NEW: Close the mobile menu after clicking a link ---
+        // If the navToggle checkbox exists and is checked (meaning the menu is open), uncheck it.
+        if (navToggle && navToggle.checked) {
+          navToggle.checked = false;
+        }
       }
     });
   });
@@ -32,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // This ensures the dynamically added icon is rendered by Lucide.
   // This call depends on the Lucide CDN script being loaded in index.html.
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
+    lucide.createIcons();
   }
 
   // Show/hide button on scroll
