@@ -125,6 +125,7 @@ html, body {
 
 /* Responsive adjustments for the new section cards */
 /* --- Default (Desktop & Mobile) Navbar Styles --- */
+/* --- Default (Desktop & Mobile) Navbar Styles --- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -156,14 +157,13 @@ html, body {
 
 /* Hamburger Icon Styles - ALWAYS visible now */
 .hamburger {
-  display: flex; /* <--- CHANGE: Always show the hamburger icon */
+  display: flex; /* <--- CRITICAL FIX: This needs to be 'flex' by default */
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
   height: 25px;
   cursor: pointer;
   z-index: 1001; /* Ensure it's above the menu when open */
-  /* Margin-left to separate it from the logo if logo doesn't have auto margin */
   margin-left: 20px; /* Adjust as needed */
 }
 
@@ -186,28 +186,28 @@ html, body {
   /* Off-canvas positioning */
   position: fixed;
   top: 0;
-  right: -100%; /* <--- CHANGE: Hidden off-screen to the right by default */
-  width: 100%; /* Take full width of the screen */
-  max-width: 300px; /* <--- OPTIONAL: Limit the width of the menu on larger screens */
+  right: -100%; /* Hidden off-screen to the right by default */
+  width: 100%;
+  max-width: 300px; /* Limit the width of the menu on larger screens */
   height: 100vh; /* Take full viewport height */
-  background: rgba(11, 29, 58, 0.98); /* Background for the dropdown menu */
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7); /* Shadow to make it pop out */
-  transition: right 0.4s ease-in-out; /* <--- CHANGE: Animate right property */
-  z-index: 999; /* Below the hamburger but above page content */
+  background: rgba(11, 29, 58, 0.98);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+  transition: right 0.4s ease-in-out;
+  z-index: 999;
   display: flex; /* Keep flex for column direction */
   justify-content: center; /* Vertically center links in the menu */
   align-items: center; /* Horizontally center links in the menu */
 }
 
 .navbar .nav-links li {
-  margin: 20px 0; /* Space between vertical links */
+  margin: 20px 0;
 }
 
 .navbar .nav-links a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.2rem; /* Slightly larger for menu */
+  font-size: 1.2rem;
   transition: color 0.3s ease, transform 0.3s ease;
   padding: 10px 0;
   position: relative;
@@ -225,8 +225,8 @@ html, body {
   height: 2px;
   background: #87cefa;
   bottom: 0;
-  left: 50%; /* Center the underline */
-  transform: translateX(-50%); /* Adjust to truly center */
+  left: 50%;
+  transform: translateX(-50%);
   transition: width 0.3s ease;
 }
 
@@ -236,7 +236,7 @@ html, body {
 
 /* Show the menu when the checkbox is checked (checkbox hack) */
 .nav-toggle:checked ~ .nav-links {
-  right: 0; /* <--- CHANGE: Slide in from the right */
+  right: 0;
 }
 
 /* Hamburger icon animation when menu is open - these stay the same */
@@ -252,7 +252,13 @@ html, body {
   transform: translateY(-11px) rotate(-45deg);
 }
 
+/* --- Remove the old media query for navbar specific styling --- */
+/* The entire @media (max-width: 768px) block that applied to .navbar,
+   .hamburger, and .nav-links can now be completely removed, as their
+   universal (desktop and mobile) styles are defined above. */
 
+/* Any other media queries for *other sections* of your page (e.g., hero, projects)
+   should remain if they are for responsive layout changes specific to those sections. */
 /* --- Remove the old media query for navbar specific styling --- */
 /* You will no longer need the @media (max-width: 768px) block that specifically
    hides the hamburger and shows it, or changes nav-links to column.
