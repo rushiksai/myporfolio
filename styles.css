@@ -124,67 +124,29 @@ html, body {
 }
 
 /* Responsive adjustments for the new section cards */
+/* --- Default (Desktop & Mobile) Navbar Styles --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  position: fixed; /* Fixed at the top */
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; /* High z-index to stay on top */
-  background: rgba(11, 29, 58, 0.98); /* Dark background with slight transparency */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
-  box-sizing: border-box; /* Include padding in width */
-  min-height: 70px; /* Ensure a minimum height for the navbar */
+  z-index: 1000;
+  background: rgba(11, 29, 58, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  min-height: 70px;
 }
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #60a5fa; /* Highlight logo color */
+  color: #60a5fa;
   text-decoration: none;
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar .nav-links li {
-  margin-left: 25px; /* Space between links */
-}
-
-.navbar .nav-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 8px 0; /* Add some padding for clickable area */
-  position: relative; /* For underline effect */
-}
-
-.navbar .nav-links a:hover {
-  color: #87cefa; /* Lighter blue on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-}
-
-.navbar .nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #87cefa; /* Underline color */
-  bottom: 0;
-  left: 0;
-  transition: width 0.3s ease;
-}
-
-.navbar .nav-links a:hover::after {
-  width: 100%; /* Expand underline on hover */
+  /* Add margin-right to push hamburger to the far right */
+  margin-right: auto; /* Pushes the logo to the left, hamburger to the right */
 }
 
 /* Hidden checkbox for the hamburger menu functionality (checkbox hack) */
@@ -192,15 +154,17 @@ html, body {
   display: none;
 }
 
-/* Hamburger Icon Styles */
+/* Hamburger Icon Styles - ALWAYS visible now */
 .hamburger {
-  display: none; /* Hidden by default, shown in mobile */
+  display: flex; /* <--- CHANGE: Always show the hamburger icon */
   flex-direction: column;
   justify-content: space-around;
   width: 30px;
   height: 25px;
   cursor: pointer;
   z-index: 1001; /* Ensure it's above the menu when open */
+  /* Margin-left to separate it from the logo if logo doesn't have auto margin */
+  margin-left: 20px; /* Adjust as needed */
 }
 
 .hamburger .bar {
@@ -211,62 +175,92 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
+/* Navigation Links (Off-canvas menu by default) */
+.navbar .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-direction: column; /* Stack links vertically */
+  text-align: center;
 
-/* Media query for mobile responsiveness */
-@media (max-width: 768px) {
-  .navbar {
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: space-between; /* Keep logo and hamburger separate */
-    padding: 1rem 1.5rem; /* Adjust padding for smaller screens */
-  }
-
-  .navbar .logo {
-    font-size: 1.5rem; /* Adjust logo size */
-  }
-
-  .hamburger {
-    display: flex; /* Show the hamburger icon on mobile */
-  }
-
-  .navbar .nav-links {
-    width: 100%; /* Take full width */
-    flex-direction: column; /* Stack links vertically */
-    text-align: center;
-    max-height: 0; /* Hidden by default */
-    overflow: hidden; /* Hide overflow content */
-    transition: max-height 0.3s ease-in-out; /* Smooth transition for opening/closing */
-    background: rgba(11, 29, 58, 0.95); /* Background for the dropdown menu */
-    padding: 0; /* Remove padding when closed */
-  }
-
-  .navbar .nav-links li {
-    margin: 15px 0; /* Adjust spacing for vertical links */
-  }
-
-  .navbar .nav-links a {
-    font-size: 1.1rem; /* Adjust link font size */
-    padding: 10px 0; /* More padding for easier tapping */
-  }
-
-  /* Show the menu when the checkbox is checked (checkbox hack) */
-  .nav-toggle:checked ~ .nav-links {
-    max-height: 300px; /* Or a suitable height to reveal all links */
-    padding: 1rem 0; /* Add padding when open */
-  }
-
-  /* Hamburger icon animation when menu is open */
-  .nav-toggle:checked + .hamburger .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-  }
-
-  .nav-toggle:checked + .hamburger .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .nav-toggle:checked + .hamburger .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-  }
+  /* Off-canvas positioning */
+  position: fixed;
+  top: 0;
+  right: -100%; /* <--- CHANGE: Hidden off-screen to the right by default */
+  width: 100%; /* Take full width of the screen */
+  max-width: 300px; /* <--- OPTIONAL: Limit the width of the menu on larger screens */
+  height: 100vh; /* Take full viewport height */
+  background: rgba(11, 29, 58, 0.98); /* Background for the dropdown menu */
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7); /* Shadow to make it pop out */
+  transition: right 0.4s ease-in-out; /* <--- CHANGE: Animate right property */
+  z-index: 999; /* Below the hamburger but above page content */
+  display: flex; /* Keep flex for column direction */
+  justify-content: center; /* Vertically center links in the menu */
+  align-items: center; /* Horizontally center links in the menu */
 }
+
+.navbar .nav-links li {
+  margin: 20px 0; /* Space between vertical links */
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.2rem; /* Slightly larger for menu */
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 10px 0;
+  position: relative;
+}
+
+.navbar .nav-links a:hover {
+  color: #87cefa;
+  transform: translateY(-2px);
+}
+
+.navbar .nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #87cefa;
+  bottom: 0;
+  left: 50%; /* Center the underline */
+  transform: translateX(-50%); /* Adjust to truly center */
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Show the menu when the checkbox is checked (checkbox hack) */
+.nav-toggle:checked ~ .nav-links {
+  right: 0; /* <--- CHANGE: Slide in from the right */
+}
+
+/* Hamburger icon animation when menu is open - these stay the same */
+.nav-toggle:checked + .hamburger .bar:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.nav-toggle:checked + .hamburger .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle:checked + .hamburger .bar:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* --- Remove the old media query for navbar specific styling --- */
+/* You will no longer need the @media (max-width: 768px) block that specifically
+   hides the hamburger and shows it, or changes nav-links to column.
+   The above CSS now defines this as the default behavior. */
+
+/* You might still keep other media queries for different sections of your page
+   (e.g., .hero-content, .projects-grid) if they have unique layout requirements
+   for mobile vs. desktop, but for the navbar, this setup makes it consistent. */
 /* --- Back To Top Button --- */
 #backToTop {
   position: fixed;
