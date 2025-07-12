@@ -127,46 +127,43 @@ html, body {
 /* --- Default (Desktop & Mobile) Navbar Styles --- */
 /* --- Default (Desktop & Mobile) Navbar Styles --- */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(11, 29, 58, 0.98);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  min-height: 70px;
+    display: flex;
+    justify-content: space-between; /* This is key for logo left, hamburger right */
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(11, 29, 58, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    min-height: 70px;
 }
 
 .navbar .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #60a5fa;
-  text-decoration: none;
-  /* Add margin-right to push hamburger to the far right */
-  margin-right: auto; /* Pushes the logo to the left, hamburger to the right */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #60a5fa;
+    text-decoration: none;
+    margin-right: auto; /* This pushes the logo to the far left */
 }
 
 /* Hidden checkbox for the hamburger menu functionality (checkbox hack) */
 .nav-toggle {
-  display: none;
+    display: none; /* Keeps the actual checkbox element hidden */
 }
-
 /* Hamburger Icon Styles - ALWAYS visible now */
 .hamburger {
-  display: flex; /* <--- CRITICAL FIX: This needs to be 'flex' by default */
-  flex-direction: column;
-  justify-content: space-around;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-  z-index: 1001; /* Ensure it's above the menu when open */
-  margin-left: 20px; /* Adjust as needed */
+    display: flex; /* Makes the hamburger icon visible by default */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1001; /* Ensures it's above the menu when open */
+    margin-left: 20px; /* Provides spacing from other elements if any */
 }
-
 .hamburger .bar {
   width: 100%;
   height: 3px;
@@ -177,26 +174,26 @@ html, body {
 
 /* Navigation Links (Off-canvas menu by default) */
 .navbar .nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-direction: column; /* Stack links vertically */
-  text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    text-align: center;
 
-  /* Off-canvas positioning */
-  position: fixed;
-  top: 0;
-  right: -100%; /* Hidden off-screen to the right by default */
-  width: 100%;
-  max-width: 300px; /* Limit the width of the menu on larger screens */
-  height: 100vh; /* Take full viewport height */
-  background: rgba(11, 29, 58, 0.98);
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
-  transition: right 0.4s ease-in-out;
-  z-index: 999;
-  display: flex; /* Keep flex for column direction */
-  justify-content: center; /* Vertically center links in the menu */
-  align-items: center; /* Horizontally center links in the menu */
+    /* Off-canvas positioning */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hides the menu off-screen to the right initially */
+    width: 100%;
+    max-width: 300px; /* Limits the width of the menu, making it pop-out from the side */
+    height: 100vh;
+    background: rgba(11, 29, 58, 0.98);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7); /* Adds the shadow on the left side of the menu */
+    transition: right 0.4s ease-in-out; /* Smooth transition for sliding in/out */
+    z-index: 999; /* Places it below the hamburger */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar .nav-links li {
@@ -236,7 +233,7 @@ html, body {
 
 /* Show the menu when the checkbox is checked (checkbox hack) */
 .nav-toggle:checked ~ .nav-links {
-  right: 0;
+    right: 0; /* Slides the menu into view by setting its right position to 0 */
 }
 
 /* Hamburger icon animation when menu is open - these stay the same */
