@@ -176,28 +176,42 @@ html, body {
 .navbar .nav-links {
     list-style: none;
     margin: 0;
-    padding: 0;
+    /* Remove padding: 0; if you want to add padding directly to the ul below */
+
     flex-direction: column;
     text-align: center;
 
     /* Off-canvas positioning */
     position: fixed;
-    top: 0;
-    right: -100%; /* Hides the menu off-screen to the right initially */
+    top: 0; /* Keep it at the top */
+    right: -100%;
     width: 100%;
-    max-width: 300px; /* Limits the width of the menu, making it pop-out from the side */
-    height: 100vh;
+    max-width: 300px;
+    /* REMOVE or CHANGE this: height: 100vh; */
+    /* Let the height be determined by content + padding */
+
     background: rgba(11, 29, 58, 0.98);
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7); /* Adds the shadow on the left side of the menu */
-    transition: right 0.4s ease-in-out; /* Smooth transition for sliding in/out */
-    z-index: 999; /* Places it below the hamburger */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.7);
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+    display: flex; /* Keep flex for column direction */
+    /* REMOVE or CHANGE this: justify-content: center; */
+    align-items: center; /* Horizontally center links in the menu */
+
+    /* Add vertical padding to control the top and bottom space */
+    padding: 50px 0; /* Adjust 50px as needed for desired top/bottom space */
+    /* You might also use padding-top and padding-bottom individually */
+    /* padding-top: 50px; */
+    /* padding-bottom: 50px; */
+
+    /* To ensure the background doesn't stretch infinitely down if content is short: */
+    /* You might want to add a min-height if the content is too short, e.g., for visual consistency */
+    /* min-height: 200px; */ /* Adjust as necessary */
 }
 
+/* You already have this for spacing between items, which is good */
 .navbar .nav-links li {
-  margin: 20px 0;
+    margin: 20px 0; /* This controls spacing between menu items */
 }
 
 .navbar .nav-links a {
